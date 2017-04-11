@@ -1,14 +1,7 @@
 #include <iostream>
 #include <conio.h>
 
-double division(int a, int b) {
-	if (b == 0) {
-		throw "Division by zero condition!";
-	}
-	return (a / b);
-}
-
-double calculation() {
+void calculation() {
 
 	double firstNumber, secondNumber;
 	char operation;
@@ -26,23 +19,22 @@ double calculation() {
 	switch (operation)
 	{
 	case '+':
-		return firstNumber + secondNumber;
+		std::cout << firstNumber + secondNumber;
 	case '-':
-		return firstNumber - secondNumber;
+		std::cout << firstNumber - secondNumber;
 	case '*':
-		return firstNumber * secondNumber;
+		std::cout << firstNumber * secondNumber;
 	case '/':
-		try {
-			if (secondNumber == 0)	throw std::overflow_error("Divide by zero exception");
-			return firstNumber / secondNumber;
-		}	
-		catch (std::overflow_error e) {
-			std::cout << e.what() << " -> ";
+		if (secondNumber != 0) {
+			std::cout << firstNumber / secondNumber;
+		}
+		else {
+			std::cout << "WTF" << std::endl;
 		}
 	}
 }
 
 int main() {
-	std::cout << calculation() << std::endl;
+	calculation();
 	_getch();
 }
